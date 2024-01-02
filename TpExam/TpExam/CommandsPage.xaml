@@ -2,19 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.CommandsPage">
+
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20">
+            <Label Text="Commands" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20"/>
+
             <!-- Your layout for displaying commands goes here -->
-            <!-- For example, you might use a ListView to display a list of commands -->
-            <ListView x:Name="CommandsListView" ItemSelected="CommandsListView_ItemSelected">
-                <!-- Define your ListView.ItemTemplate to display each command -->
-                <ListView.ItemTemplate>
+            <!-- For example, you might use a CollectionView to display a list of commands -->
+            <CollectionView x:Name="CommandsCollectionView" SelectionMode="Single" SelectionChanged="CommandsCollectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding NomClient}" />
-                        <!-- Add more bindings for other properties of the Command object -->
+                        <Frame Padding="10" Margin="0,5,0,5" CornerRadius="5" BackgroundColor="#F5F5F5" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="{Binding NomClient}" FontAttributes="Bold" FontSize="16"/>
+                                <!-- Add more labels for other properties of the Command object -->
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

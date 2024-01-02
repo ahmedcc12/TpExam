@@ -6,21 +6,38 @@
         <StackLayout>
             <!-- Add a ListView to display products -->
             <!-- Add a ListView to display products -->
-            <ListView x:Name="ProductsListView">
+            <ListView x:Name="ProductsListView" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                <!-- Display the product details -->
-                                <StackLayout>
-                                    <Label Text="{Binding Nom}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Description}" />
-                                    <Label Text="{Binding Prix, StringFormat='Price: {0:C}'}" />
-                                </StackLayout>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                                <!-- Add to Cart button -->
-                                <Button Text="Add to Cart" Clicked="AddToCartButton_Clicked" CommandParameter="{Binding .}" />
-                            </StackLayout>
+                                <!-- Product Image -->
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="{Binding UrlImage}" Aspect="AspectFill" WidthRequest="100" HeightRequest="100"/>
+
+                                <!-- Product Title -->
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nom}" FontAttributes="Bold"/>
+
+                                <!-- Product Description -->
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" LineBreakMode="TailTruncation" MaxLines="2"/>
+
+                                <!-- Product Price -->
+                                <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Prix, StringFormat='Price: {0:C}'}" TextColor="Red" FontAttributes="Bold"/>
+
+                                <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                                    <Button Text="Add to Cart" Clicked="AddToCartButton_Clicked" CommandParameter="{Binding .}" />
+                                </StackLayout>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

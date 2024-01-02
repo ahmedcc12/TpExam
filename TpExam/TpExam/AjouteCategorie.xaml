@@ -2,17 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.AjouteCategorie">
+
     <ContentPage.Content>
-        <StackLayout>
-            <TableView>
-                <TableRoot>
-                    <TableSection>
-                        <EntryCell x:Name="Name" Label="CategorieName"/>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
-            <Button x:Name="BtnAdd" Text="Ajouter" Clicked="BtnAdd_Clicked"/>
-            <Button x:Name="ShowCategoriesButton" Text="Show Categories" Clicked="ShowCategoriesButton_Clicked"/>
+        <StackLayout Padding="20" BackgroundColor="#FFFFFF">
+            <!-- Category Name Entry Section -->
+            <StackLayout Margin="0,0,0,20">
+                <Label Text="Category Name" FontSize="20" FontAttributes="Bold" TextColor="#333333" />
+                <Entry x:Name="Name" Placeholder="Category Name" FontSize="16" />
+            </StackLayout>
+
+            <!-- Add and Show Categories Buttons -->
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BtnAdd" Text="Add Category" Clicked="BtnAdd_Clicked" BackgroundColor="#007BFF" TextColor="#FFFFFF" FontSize="18" CornerRadius="8" Margin="0,0,10,0"/>
+                <Button x:Name="ShowCategoriesButton" Text="Show Categories" Clicked="ShowCategoriesButton_Clicked" BackgroundColor="#28a745" TextColor="#FFFFFF" FontSize="18" CornerRadius="8" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

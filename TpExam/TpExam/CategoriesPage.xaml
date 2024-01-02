@@ -2,22 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.CategoriesPage">
+
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Add Category" Clicked="AddCategoryButton_Clicked" />
-            <ListView x:Name="CategoriesListView">
-                <ListView.ItemTemplate>
+            <!-- Header Section -->
+            <StackLayout BackgroundColor="#3498DB" Padding="10,20,10,20">
+                <Label Text="Categories" FontSize="24" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <!-- Add Category Button -->
+            <Button Text="Add Category" Clicked="AddCategoryButton_Clicked" BackgroundColor="#3498DB" TextColor="White" Margin="10"/>
+
+            <!-- Categories Collection -->
+            <CollectionView x:Name="CategoriesListView" ItemsSource="{Binding Categories}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Nom}" VerticalOptions="CenterAndExpand" />
-                                <Button Text="Update" Clicked="UpdateButton_Clicked" CommandParameter="{Binding .}" />
-                                <Button Text="Delete" Clicked="DeleteButton_Clicked" CommandParameter="{Binding .}" />
+                        <Grid Padding="10" BackgroundColor="#ECF0F1" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Nom}" FontSize="18" VerticalOptions="CenterAndExpand" Grid.Column="0"/>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Grid.Column="1">
+                                <Button Text="Update" Clicked="UpdateButton_Clicked" CommandParameter="{Binding .}" BackgroundColor="#2ECC71" TextColor="White" FontSize="14" WidthRequest="80"/>
+                                <Button Text="Delete" Clicked="DeleteButton_Clicked" CommandParameter="{Binding .}" BackgroundColor="#E74C3C" TextColor="White" FontSize="14" WidthRequest="80"/>
                             </StackLayout>
-                        </ViewCell>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

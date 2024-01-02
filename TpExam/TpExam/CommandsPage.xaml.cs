@@ -1,9 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using TpExam.Models;
+using System.Linq;
 
 namespace TpExam
-
 {
     public partial class CommandsPage : ContentPage
     {
@@ -16,14 +16,14 @@ namespace TpExam
         private void LoadCommands()
         {
             // Fetch and display a list of commands with associated details (including LigneCommande items)
-            CommandsListView.ItemsSource = App.Database.GetAllCommandsWithDetails();
+            CommandsCollectionView.ItemsSource = App.Database.GetAllCommandsWithDetails();
         }
 
-        private async void CommandsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void CommandsCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Handle the selection of a command (if needed)
             // For example, you might navigate to a detailed view of the selected command
-            if (e.SelectedItem is Commande selectedCommand)
+            if (e.CurrentSelection.FirstOrDefault() is Commande selectedCommand)
             {
                 // Log or debug statement to check if this block is executed
                 System.Diagnostics.Debug.WriteLine($"Selected Command ID: {selectedCommand.Id}");
@@ -35,8 +35,5 @@ namespace TpExam
                 await Navigation.PushAsync(commandDetailPage);
             }
         }
-
-
-
     }
 }

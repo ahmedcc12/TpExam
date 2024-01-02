@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.UpdateProduitPage">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Entry x:Name="UpdatedProductName" Placeholder="Enter updated product name" />
-            <Entry x:Name="UpdatedProductDescription" Placeholder="Enter updated product description" />
-            <Entry x:Name="UpdatedProductPrice" Placeholder="Enter updated product price" />
-            <Entry x:Name="UpdatedProductImageUrl" Placeholder="Enter updated product image URL" />
-            <Button Text="Update" Clicked="UpdateButton_Clicked" />
+        <StackLayout Padding="20">
+            <Entry x:Name="UpdatedProductName" Placeholder="Enter updated product name" BackgroundColor="#ecf0f1" Margin="0,0,0,10" />
+            <Entry x:Name="UpdatedProductDescription" Placeholder="Enter updated product description" BackgroundColor="#ecf0f1" Margin="0,0,0,10" />
+            <Entry x:Name="UpdatedProductPrice" Placeholder="Enter updated product price" Keyboard="Numeric" BackgroundColor="#ecf0f1" Margin="0,0,0,10" />
+            <Entry x:Name="UpdatedProductImageUrl" Placeholder="Enter updated product image URL" BackgroundColor="#ecf0f1" Margin="0,0,0,10" />
+            <Button Text="Update" Clicked="UpdateButton_Clicked" BackgroundColor="#3498db" TextColor="White" CornerRadius="5" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

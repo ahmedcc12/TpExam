@@ -5,27 +5,41 @@
     <ContentPage.Content>
         <StackLayout>
             <!-- Add a ListView to display products -->
-            <ListView x:Name="ProductsListView" ItemsSource="{Binding cartItems}">
+            <ListView x:Name="ProductsListView" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                <!-- Display product details from associated Produit -->
-                                <StackLayout>
-                                    <Label Text="{Binding Produit.Nom}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Produit.Description}" />
-                                   
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Product Image -->
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Produit.UrlImage}" Aspect="AspectFill" WidthRequest="100" HeightRequest="100"/>
+
+                                <!-- Product Title -->
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Produit.Nom}" FontAttributes="Bold"/>
+
+                                <!-- Product Description -->
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Produit.Description}" LineBreakMode="TailTruncation" MaxLines="2"/>
+
+                                <!-- Product Price -->
+                                <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Produit.Prix, StringFormat='Price: {0:C}'}" TextColor="Red" FontAttributes="Bold"/>
+
+                                <!-- Quantity Selector -->
+                                <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                                    <Button Text="-" Clicked="DecreaseQuantity"/>
+                                    <Label Text="{Binding Quantite}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Button Text="+" Clicked="IncreaseQuantity"/>
                                 </StackLayout>
-                                <Label Text="{Binding Produit.Prix, StringFormat='Price: {0:C}'}" />
-                                <!-- Display and adjust quantity -->
-                                <StackLayout Orientation="Horizontal">
-                                    <Button Text="+" Clicked="IncreaseQuantity_Clicked" />
-                                    <Button Text="-" Clicked="DecreaseQuantity_Clicked" />
-                                    <Label Text="{Binding Quantite}" />
-                                    
-                                </StackLayout>
-                                <Label Text="{Binding TotalProduit, StringFormat='Total: {0:C}'}" />
-                            </StackLayout>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

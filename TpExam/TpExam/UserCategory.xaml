@@ -7,7 +7,11 @@
             <ListView x:Name="CategoriesListView" ItemSelected="OnCategorySelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Nom}" />
+                        <ViewCell>
+                            <StackLayout Padding="15" Spacing="10" BackgroundColor="#ECF0F1">
+                                <Label Text="{Binding Nom}" FontSize="18" TextColor="#333333" />
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -2,33 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.ProduitsPage">
+
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20">
             <!-- Add a Button to navigate to AjouteProduit.xaml -->
-            <Button Text="Add Product" Clicked="AddProductButton_Clicked" />
+            <Button Text="Add Product" Clicked="AddProductButton_Clicked" BackgroundColor="#3498db" TextColor="White" CornerRadius="5" Margin="0,0,0,20" />
 
             <!-- Add a ListView to display products -->
-            <ListView x:Name="ProductsListView">
+            <ListView x:Name="ProductsListView" ItemsSource="{Binding Products}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <!-- Display the product image -->
-                                <Image Source="{Binding UrlImage}" WidthRequest="50" HeightRequest="50" />
+                            <StackLayout Orientation="Vertical" Spacing="10">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <!-- Display the product image -->
+                                    <Image Source="{Binding UrlImage}" WidthRequest="70" HeightRequest="70" Aspect="AspectFill" />
 
-                                <!-- Display the product details -->
-                                <StackLayout>
-                                    <Label Text="{Binding Nom}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Description}" />
-                                    
-
-
-                                    <!-- Add other product details as needed -->
+                                    <!-- Display the product details -->
+                                    <StackLayout>
+                                        <Label Text="{Binding Nom}" FontAttributes="Bold" />
+                                        <Label Text="{Binding Description}" />
+                                    </StackLayout>
                                 </StackLayout>
-                                <Label Text="{Binding Prix, StringFormat='Price: {0:C}'}" />
-                                <!-- Add Update and Delete buttons -->
-                                <Button Text="Update" Clicked="UpdateButton_Clicked" CommandParameter="{Binding .}" />
-                                <Button Text="Delete" Clicked="DeleteButton_Clicked" CommandParameter="{Binding .}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <!-- Display product price -->
+                                    <Label Text="{Binding Prix, StringFormat='Price: {0:C}'}" FontAttributes="Bold" />
+
+                                    <!-- Add Update and Delete buttons -->
+                                    <Button Text="Update" Clicked="UpdateButton_Clicked" CommandParameter="{Binding .}" BackgroundColor="#27ae60" TextColor="White" CornerRadius="5" />
+                                    <Button Text="Delete" Clicked="DeleteButton_Clicked" CommandParameter="{Binding .}" BackgroundColor="#e74c3c" TextColor="White" CornerRadius="5" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

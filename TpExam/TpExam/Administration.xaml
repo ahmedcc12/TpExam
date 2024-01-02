@@ -3,16 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.Administration">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand">
+            <Label Text="Admin login page" HorizontalOptions="Center" FontSize="24" />
 
             <!-- Login Form -->
             <Entry x:Name="UsernameEntry" Placeholder="Username" />
             <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
 
-            <Button Text="Login" Clicked="OnLoginButtonClicked" />
+            <Button Text="Login" Clicked="OnLoginButtonClicked" BackgroundColor="#3498DB" TextColor="White" CornerRadius="5"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

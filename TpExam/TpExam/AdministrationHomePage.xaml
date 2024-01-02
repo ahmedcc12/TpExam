@@ -2,11 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TpExam.AdministrationHomePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="AdminButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3498db" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Margin" Value="0,10,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Categories" Clicked="CategoriesButton_Clicked" />
-            <Button Text="Produits" Clicked="ProduitsButton_Clicked" />
-            <Button Text="Voir les Commandes" Clicked="VoirCommandesButton_Clicked" />
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+            <!-- Add a logo or app name at the top -->
+            <Image Source="https://t4.ftcdn.net/jpg/02/66/71/71/360_F_266717164_J8Fqw4OcXRkKtNwFyHD02zIEsxPI7qHH.jpg" HeightRequest="100" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Use a Grid for better organization -->
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Use a styled button for each category -->
+                <Button Text="Categories" Clicked="CategoriesButton_Clicked" Style="{StaticResource AdminButtonStyle}" />
+                <Button Text="Produits" Clicked="ProduitsButton_Clicked" Style="{StaticResource AdminButtonStyle}" Grid.Row="1" />
+                <Button Text="Voir les Commandes" Clicked="VoirCommandesButton_Clicked" Style="{StaticResource AdminButtonStyle}" Grid.Row="2" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

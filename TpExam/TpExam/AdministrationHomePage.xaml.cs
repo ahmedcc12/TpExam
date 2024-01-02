@@ -9,6 +9,7 @@ namespace TpExam
         {
             InitializeComponent();
         }
+
         private async void VoirCommandesButton_Clicked(object sender, EventArgs e)
         {
             // Navigate to the page displaying all commands
@@ -26,11 +27,5 @@ namespace TpExam
             // Navigate to the ProduitsPage (replace with your actual page)
             await Navigation.PushAsync(new ProduitsPage());
         }
-
-      /*  private async void CommandesButton_Clicked(object sender, EventArgs e)
-        {
-            // Navigate to the CommandesPage (replace with your actual page)
-            await Navigation.PushAsync(new CommandesPage());
-        }*/
     }
 }

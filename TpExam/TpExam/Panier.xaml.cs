@@ -41,7 +41,7 @@ namespace TpExam
             ProductsListView.ItemsSource = cartItems;
         }
 
-        private void IncreaseQuantity_Clicked(object sender, EventArgs e)
+        private void IncreaseQuantity(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             LigneCommande ligneCommande = (LigneCommande)button.BindingContext;
@@ -49,7 +49,7 @@ namespace TpExam
             UpdateCartItem(ligneCommande);
         }
 
-        private void DecreaseQuantity_Clicked(object sender, EventArgs e)
+        private void DecreaseQuantity(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             LigneCommande ligneCommande = (LigneCommande)button.BindingContext;
@@ -136,4 +136,4 @@ namespace TpExam
             await Navigation.PopAsync();
         }
     }
-    }
+}
